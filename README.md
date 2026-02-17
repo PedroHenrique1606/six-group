@@ -12,28 +12,27 @@ Página VSL (Video Sales Letter) responsiva com fluxo de produtos, carrinho, che
 
 1. Clone o repositório e entre na pasta do projeto.
 2. Instale as dependências:
+
    ```bash
    npm install
    ```
+
 3. Suba o servidor de desenvolvimento:
+
    ```bash
    npm run dev
    ```
+
 4. Acesse [http://localhost:3000](http://localhost:3000) no navegador.
 
 **Rotas principais:** `/` (landing), `/checkout`, `/obrigado`, `/produto/maxx`, `/produto/thermo`, `/produto/gold`.
 
 Para build de produção e rodar localmente:
+
 ```bash
 npm run build
 npm run start
 ```
-
----
-
-## Deploy na Vercel
-
-Conecte o repositório à [Vercel](https://vercel.com); o build usa `next build`. Variáveis de ambiente não são obrigatórias para o fluxo atual.
 
 ---
 
