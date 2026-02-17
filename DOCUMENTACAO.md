@@ -70,7 +70,7 @@ Página VSL para Marketing Digital – Projeto Six Group
 
 ### 1. Código-fonte
 
-- **Repositório no GitHub:** <https://github.com/PedroHenrique1606/grupo-six.git>
+- **Repositório no GitHub:** <https://github.com/PedroHenrique1606/six-group>
 - **Documentação de como executar localmente:** Ver seção "Como executar localmente" abaixo.
 
 ### 2. Versão em Produção
@@ -88,7 +88,7 @@ Página VSL para Marketing Digital – Projeto Six Group
 
 ## Como executar localmente
 
-1. Clone o repositório: `git clone https://github.com/PedroHenrique1606/grupo-six.git`
+1. Clone o repositório: `git clone https://github.com/PedroHenrique1606/six-group`
 2. Entre na pasta: `cd six-group`
 3. Instale as dependências: `npm install` ou `npm i`
 4. Rode em desenvolvimento: `npm run dev`
@@ -139,23 +139,27 @@ Para build de produção: `npm run build && npm run start`
 
 ## Métricas do Lighthouse (screenshots)
 
-**Como gerar:** Build de produção (`npm run build && npm run start`), abra a URL no Chrome → DevTools → Lighthouse → selecione Performance, Accessibility, Best Practices, SEO → Desktop e/ou Mobile → Analyze. Salve os screenshots em `docs/lighthouse/`.
+**Como gerar:** Build de produção (`npm run build && npm run start`), abra a URL no Chrome → DevTools → Lighthouse → selecione Performance, Accessibility, Best Practices, SEO → Desktop e/ou Mobile → Analyze.
 
-| Categoria       | Desktop | Mobile | 
+**Screenshots (em `docs/lighthouse/`):**
+
+| Categoria       | Desktop | Mobile |
 |-----------------|---------|--------|
-| Performance     | [ ] | [ ] |
-| Accessibility   | [ ] | [ ] |
-| Best Practices  | [ ] | [ ] |
-| SEO             | [ ] | [ ] |
+| Performance     | ![Imagem Desktop de Performance](./docs/lighthouse/performance%20-%20desktop.jpg) | ![Imagem Mobile Performance](./docs/lighthouse/performance-mobile.jpg) |
+| Accessibility   | ![Imagem Desktop Acessibilidade](./docs/lighthouse/acessibilidade%20-%20desktop.jpg) | ![Imagem Mobile Acessibilidade](./docs/lighthouse/acessibilidade%20-%20mobile.jpg) |
+| Best Practices  | ![Imagem Desktop Boas Práticas](./docs/lighthouse/boas%20praticas%20-%20desktop.jpg) | ![Imagem Mobile Boas Práticas](./docs/lighthouse/boas%20praticas%20-%20mobile.jpg) |
+| SEO             | ![Imagem Desktop SEO](./docs/lighthouse/seo%20-%20desktop.jpg) | ![Imagem Mobile SEO](./docs/lighthouse/seo%20-%20mobile.jpg) |
 
-**Scores obtidos:**
+**Scores obtidos** (Lighthouse em produção – grupo-six.vercel.app):
 
 | Categoria       | Desktop (0–100) | Mobile (0–100) |
 |-----------------|-----------------|----------------|
-| Performance     | _____ | _____ |
-| Accessibility   | _____ | _____ |
-| Best Practices  | _____ | _____ |
-| SEO             | _____ | _____ |
+| Performance     | 99 | 91 |
+| Accessibility   | 88 | 88 |
+| Best Practices  | 100 | 100 |
+| SEO             | 100 | 100 |
+
+**Métricas de Performance (mobile)** – FCP 1,1 s, LCP 3,4 s, TBT 50 ms, CLS 0, Speed Index 2,5 s (conforme screenshot performance-mobile.jpg).
 
 ---
 
