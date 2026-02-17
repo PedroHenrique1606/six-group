@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion } from "framer-motion";
 import {
   PlayIcon,
   PauseIcon,
@@ -23,6 +22,7 @@ function YouTubeEmbed({ videoId, title }: { videoId: string; title: string }) {
       className="absolute inset-0 h-full w-full"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
+      loading="lazy"
     />
   );
 }
@@ -146,13 +146,7 @@ export function VideoPlayer() {
 
   return (
     <section id="video" className="w-full px-4 py-6 sm:py-10">
-      <motion.div
-        className="mx-auto max-w-4xl"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="mx-auto max-w-4xl">
         <Card className="w-full overflow-hidden border border-sky-100 bg-white shadow-xl">
           <div className="relative aspect-video w-full bg-sky-50">
             {hasYouTube && videoId ? (
@@ -162,7 +156,7 @@ export function VideoPlayer() {
             )}
           </div>
         </Card>
-      </motion.div>
+      </div>
     </section>
   );
 }

@@ -2,26 +2,12 @@
 
 import { useRef, useState, useEffect } from "react";
 import { Card, CardBody, Avatar, Button } from "@heroui/react";
-import { motion } from "framer-motion";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const TESTIMONIAL_IDS = ["1", "2", "3", "4", "5", "6", "7", "8"] as const;
 const SEEDS = ["Maria", "Joao", "Ana", "Ricardo", "Fernanda", "Carlos", "Patricia", "Lucas"];
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.05 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-};
 
 export function TestimonialsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -95,28 +81,17 @@ export function TestimonialsSection() {
       id="depoimentos"
       className="w-full bg-gradient-to-b from-sky-50/50 to-white px-4 py-14 sm:py-20"
     >
-      <motion.div
-        className="mx-auto max-w-5xl"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-60px" }}
-        variants={container}
-      >
-        <motion.h2
-          variants={item}
-          className="mb-4 text-center text-2xl font-bold text-foreground sm:text-3xl"
-        >
+      <div className="mx-auto max-w-5xl">
+        <h2 className="mb-4 text-center text-2xl font-bold text-foreground sm:text-3xl">
           {t("testimonials.title")}
-        </motion.h2>
-        <motion.p
-          variants={item}
-          className="mx-auto mb-10 max-w-xl text-center text-default-600"
-        >
+        </h2>
+        <p className="mx-auto mb-10 max-w-xl text-center text-default-600">
           {t("testimonials.subtitle")}
-        </motion.p>
+        </p>
 
-        <motion.div variants={item} className="relative">
-          <div className="scrollbar-hide flex gap-4 overflow-x-auto overflow-y-hidden py-2 pb-4 pl-1 pr-1 sm:pl-2 sm:pr-2"
+        <div className="relative">
+          <div
+            className="scrollbar-hide flex gap-4 overflow-x-auto overflow-y-hidden py-2 pb-4 pl-1 pr-1 sm:pl-2 sm:pr-2"
             style={{
               scrollSnapType: "x mandatory",
               scrollBehavior: "smooth",
@@ -197,8 +172,8 @@ export function TestimonialsSection() {
               <ChevronRightIcon className="h-5 w-5" />
             </Button>
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

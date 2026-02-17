@@ -127,7 +127,7 @@ export function CheckoutClient() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen overflow-x-hidden bg-slate-50">
       <AnimatePresence>
         {submitStatus === "success" && (
           <motion.div
@@ -181,14 +181,14 @@ export function CheckoutClient() {
         )}
       </AnimatePresence>
       <div className="mx-auto max-w-6xl px-4 py-6 sm:py-8 sm:px-6">
-        <h1 className="mb-6 text-xl font-bold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:text-3xl">
+        <h1 className="mb-6 truncate text-xl font-bold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:text-3xl">
           {t("checkout.title")}
         </h1>
 
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-0">
-          <section className="space-y-4 sm:space-y-6 lg:border-r lg:border-slate-200 lg:pr-8">
-            <Card className="border border-slate-200/80 shadow-sm">
-              <CardBody className="gap-4 p-4 sm:gap-5 sm:p-6">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-2 lg:gap-0">
+          <section className="min-w-0 space-y-4 sm:space-y-6 lg:border-r lg:border-slate-200 lg:pr-8">
+            <Card className="min-w-0 border border-slate-200/80 shadow-sm overflow-hidden">
+              <CardBody className="min-w-0 gap-4 p-4 sm:gap-5 sm:p-6">
                 <h2 className="text-lg font-semibold text-foreground">
                   {t("checkout.orderSummary")}
                 </h2>
@@ -199,26 +199,26 @@ export function CheckoutClient() {
                     return (
                       <li
                         key={slug}
-                        className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-slate-50/50 p-3 sm:flex-row sm:items-center sm:gap-4 sm:p-4"
+                        className="flex min-w-0 flex-col gap-3 rounded-xl border border-slate-100 bg-slate-50/50 p-3 sm:flex-row sm:items-center sm:gap-4 sm:p-4"
                       >
-                        <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+                        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-4">
                           <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-white sm:h-20 sm:w-20">
-<ProductImageFallback
-                            src={product.image}
-                            fallback={product.imageFallback}
-                            alt={t(`product.${slug}.name`)}
-                            sizes="80px"
-                          />
+                            <ProductImageFallback
+                              src={product.image}
+                              fallback={product.imageFallback}
+                              alt={t(`product.${slug}.name`)}
+                              sizes="80px"
+                            />
                           </div>
-                          <div className="min-w-0 flex-1">
+                          <div className="min-w-0 flex-1 overflow-hidden">
                             <p className="truncate font-medium text-foreground sm:whitespace-normal">
                               {t(`product.${slug}.name`)}
                             </p>
-                            <p className="text-xs text-default-500 sm:text-sm">
+                            <p className="truncate text-xs text-default-500 sm:text-sm">
                               {formatPrice(product.price)} × {quantity}
                             </p>
                           </div>
-                          <p className="shrink-0 font-semibold text-sky-600">
+                          <p className="shrink-0 text-sm font-semibold text-sky-600 sm:text-base">
                             {formatPrice(product.price * quantity)}
                           </p>
                         </div>
@@ -262,7 +262,7 @@ export function CheckoutClient() {
                 <Divider />
                 <div className="space-y-3">
                   <p className="text-sm font-medium text-foreground">{t("checkout.shipping")}</p>
-                  <div className="flex flex-col gap-2 sm:flex-row">
+                  <div className="flex min-w-0 flex-col gap-2 sm:flex-row">
                     <Input
                       placeholder={t("checkout.cep")}
                       value={cep}
@@ -289,14 +289,14 @@ export function CheckoutClient() {
                     </Button>
                   </div>
                   {cepAddress && (
-                    <div className="flex items-start gap-2 rounded-lg border border-slate-100 bg-slate-50/50 p-3">
+                    <div className="flex min-w-0 items-start gap-2 rounded-lg border border-slate-100 bg-slate-50/50 p-3">
                       <TruckIcon className="h-4 w-4 shrink-0 text-sky-600" />
-                      <div className="text-xs text-default-600">
-                        <p className="font-medium text-foreground">
+                      <div className="min-w-0 flex-1 overflow-hidden text-xs text-default-600">
+                        <p className="truncate font-medium text-foreground">
                           {cepAddress.logradouro}
                           {cepAddress.bairro ? `, ${cepAddress.bairro}` : ""}
                         </p>
-                        <p>
+                        <p className="truncate">
                           {cepAddress.localidade} - {cepAddress.uf}
                         </p>
                         <p className="mt-1 font-medium text-sky-600">
@@ -308,25 +308,25 @@ export function CheckoutClient() {
                   )}
                 </div>
                 <Divider />
-                <div className="flex items-center justify-between">
-                  <span className="text-default-600">
+                <div className="flex min-w-0 items-center justify-between gap-2">
+                  <span className="min-w-0 truncate text-default-600">
                     {t("checkout.subtotal")} ({totalCount} {totalCount === 1 ? t("checkout.item") : t("checkout.items")})
                   </span>
-                  <span className="font-semibold text-foreground">
+                  <span className="shrink-0 font-semibold text-foreground">
                     {formatPrice(subtotal)}
                   </span>
                 </div>
                 {cepAddress && (
-                  <div className="flex items-center justify-between text-sm text-default-600">
-                    <span>{t("checkout.shippingCost")}</span>
-                    <span>
+                  <div className="flex min-w-0 items-center justify-between gap-2 text-sm text-default-600">
+                    <span className="min-w-0 truncate">{t("checkout.shippingCost")}</span>
+                    <span className="shrink-0">
                       {shipping === 0 ? t("checkout.freeShipping") : formatPrice(shipping)}
                     </span>
                   </div>
                 )}
-                <div className="flex items-center justify-between text-lg">
-                  <span className="font-semibold text-foreground">{t("checkout.total")}</span>
-                  <span className="font-bold text-sky-600">
+                <div className="flex min-w-0 items-center justify-between gap-2 text-lg">
+                  <span className="min-w-0 truncate font-semibold text-foreground">{t("checkout.total")}</span>
+                  <span className="shrink-0 font-bold text-sky-600">
                     {formatPrice(total)}
                   </span>
                 </div>
@@ -342,9 +342,9 @@ export function CheckoutClient() {
             </Button>
           </section>
 
-          <section className="lg:pl-8">
-            <Card className="border border-slate-200/80 shadow-sm lg:sticky lg:top-24">
-              <CardBody className="gap-4 p-4 sm:gap-6 sm:p-6">
+          <section className="min-w-0 lg:pl-8">
+            <Card className="min-w-0 overflow-hidden border border-slate-200/80 shadow-sm lg:sticky lg:top-24">
+              <CardBody className="min-w-0 gap-4 p-4 sm:gap-6 sm:p-6">
                 <h2 className="text-base font-semibold text-foreground sm:text-lg">
                   {t("checkout.payment")}
                 </h2>
@@ -357,33 +357,33 @@ export function CheckoutClient() {
                         key={id}
                         type="button"
                         onClick={() => setPaymentMethod(id)}
-                        className={`relative flex flex-col items-center gap-1.5 rounded-xl border-2 p-3 transition-all duration-200 ease-out sm:gap-2 sm:p-4 ${
+                        className={`relative flex min-w-0 flex-col items-center gap-1.5 overflow-hidden rounded-xl border-2 p-3 transition-all duration-200 ease-out sm:gap-2 sm:p-4 ${
                           selected
                             ? "border-sky-500 bg-sky-50 text-sky-700"
                             : "border-slate-200 bg-white text-default-600 hover:border-slate-300 hover:bg-slate-50"
                         }`}
                       >
                         {selected && (
-                          <span className="absolute right-2 top-2 rounded-full bg-sky-500 p-0.5 text-white">
+                          <span className="absolute right-2 top-2 shrink-0 rounded-full bg-sky-500 p-0.5 text-white">
                             <CheckSolid className="h-3.5 w-3.5" />
                           </span>
                         )}
                         <span
-                          className={`flex h-12 w-12 items-center justify-center rounded-full ${
+                          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${
                             selected ? "bg-sky-500 text-white" : "bg-slate-100"
                           }`}
                         >
                           <Icon className="h-6 w-6" />
                         </span>
-                        <span className="font-medium">{t(labelKey)}</span>
-                        <span className="text-center text-xs opacity-80">{t(descKey)}</span>
+                        <span className="min-w-0 truncate font-medium">{t(labelKey)}</span>
+                        <span className="line-clamp-2 min-w-0 text-center text-xs opacity-80">{t(descKey)}</span>
                       </button>
                     );
                   })}
                 </div>
 
                 {isCard && (
-                  <div className="space-y-4 rounded-xl border border-slate-100 bg-slate-50/50 p-4">
+                  <div className="min-w-0 space-y-4 rounded-xl border border-slate-100 bg-slate-50/50 p-4">
                     {paymentMethod === "credit" && (
                       <Select
                         label={t("checkout.installments")}
@@ -442,13 +442,13 @@ export function CheckoutClient() {
                 )}
 
                 {paymentMethod === "pix" && (
-                  <div className="flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50/80 p-4">
+                  <div className="flex min-w-0 items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50/80 p-4">
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white">
                       <QrCodeIcon className="h-5 w-5" />
                     </span>
-                    <div className="text-sm text-emerald-800">
+                    <div className="min-w-0 flex-1 overflow-hidden text-sm text-emerald-800">
                       <p className="font-medium">{t("checkout.payInstant")}</p>
-                      <p className="mt-1 opacity-90">
+                      <p className="mt-1 break-words opacity-90">
                         {t("checkout.payInstantDesc")}
                       </p>
                     </div>
@@ -456,13 +456,13 @@ export function CheckoutClient() {
                 )}
 
                 {paymentMethod === "boleto" && (
-                  <div className="flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50/80 p-4">
+                  <div className="flex min-w-0 items-start gap-3 rounded-xl border border-amber-200 bg-amber-50/80 p-4">
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white">
                       <DocumentTextIcon className="h-5 w-5" />
                     </span>
-                    <div className="text-sm text-amber-900">
+                    <div className="min-w-0 flex-1 overflow-hidden text-sm text-amber-900">
                       <p className="font-medium">{t("checkout.boleto")}</p>
-                      <p className="mt-1 opacity-90">
+                      <p className="mt-1 break-words opacity-90">
                         {t("checkout.boletoDesc2")}
                       </p>
                     </div>
@@ -478,12 +478,12 @@ export function CheckoutClient() {
                   <Button
                     color="primary"
                     size="lg"
-                    className="w-full font-semibold"
+                    className="w-full min-w-0 font-semibold"
                     onPress={handleSubmit}
                     isLoading={submitStatus === "submitting"}
                     isDisabled={submitStatus === "submitting"}
                   >
-                    {t("checkout.finishOrder")} · {formatPrice(total)}
+                    <span className="truncate">{t("checkout.finishOrder")} · {formatPrice(total)}</span>
                   </Button>
                 </motion.div>
               </CardBody>

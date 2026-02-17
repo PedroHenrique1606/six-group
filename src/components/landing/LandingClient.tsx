@@ -1,15 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
+import dynamic from "next/dynamic";
 import { HeroSection } from "./HeroSection";
-import { VideoPlayer } from "./VideoPlayer";
-import { BenefitsSection } from "./BenefitsSection";
-import { ProductsSection } from "./ProductsSection";
-import { GuaranteeSection } from "./GuaranteeSection";
-import { TestimonialsSection } from "./TestimonialsSection";
-import { FinalCtaSection } from "./FinalCtaSection";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { getUtmFromSearch, saveUtmToStorage } from "@/lib/utm";
+
+const VideoPlayer = dynamic(() => import("./VideoPlayer").then((m) => ({ default: m.VideoPlayer })), { ssr: true });
+const BenefitsSection = dynamic(() => import("./BenefitsSection").then((m) => ({ default: m.BenefitsSection })), { ssr: true });
+const ProductsSection = dynamic(() => import("./ProductsSection").then((m) => ({ default: m.ProductsSection })), { ssr: true });
+const GuaranteeSection = dynamic(() => import("./GuaranteeSection").then((m) => ({ default: m.GuaranteeSection })), { ssr: true });
+const TestimonialsSection = dynamic(() => import("./TestimonialsSection").then((m) => ({ default: m.TestimonialsSection })), { ssr: true });
+const FinalCtaSection = dynamic(() => import("./FinalCtaSection").then((m) => ({ default: m.FinalCtaSection })), { ssr: true });
 
 export function LandingClient() {
   useEffect(() => {

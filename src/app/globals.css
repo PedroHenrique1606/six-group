@@ -31,3 +31,38 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes hero-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes hero-fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes hero-line {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 0.3; }
+}
+.hero-float { animation: hero-float 3s ease-in-out infinite; }
+.hero-fade-in { animation: hero-fade-in 0.6s ease-out forwards; }
+.hero-fade-in-up { animation: hero-fade-in-up 0.6s ease-out forwards; }
+.hero-fade-in-up-delay { animation: hero-fade-in-up 0.6s ease-out 0.1s forwards; opacity: 0; }
+.hero-scale-in { animation: hero-scale-in 0.4s ease-out 0.25s forwards; opacity: 0; }
+.hero-scale-in-delay { animation: hero-scale-in 0.4s ease-out 0.25s forwards; opacity: 0; }
+.hero-line { animation: hero-line 0.4s ease-out forwards; transform-origin: left; }
+.hero-line-thin { animation: hero-line 0.3s ease-out forwards; transform-origin: left; }
+
+@keyframes whatsapp-in {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+.whatsapp-in { animation: whatsapp-in 0.4s ease-out 1s forwards; opacity: 0; }
